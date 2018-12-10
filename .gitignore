@@ -77,3 +77,4 @@ build/*
 config/local.json
 *.log
 *.tmp
+dist/
