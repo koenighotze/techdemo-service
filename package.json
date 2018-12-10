@@ -19,7 +19,9 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\"",
     "prettify": "./scripts/prettify.sh",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "lint.dockerfile": "docker run --rm -i hadolint/hadolint < Dockerfile"
+    "lint.dockerfile": "docker run --rm -i hadolint/hadolint < Dockerfile",
+    "build-docker": "docker build -t koenighotze/techdemo:`node -p \"require('./package.json').version\"` .",
+    "run-docker": "docker run --rm=true -ti --init -p 3000:3000 koenighotze/techdemo:`node -p \"require('./package.json').version\"` ."
   },
   "dependencies": {
     "amqplib": "^0.5.3",
