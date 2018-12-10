@@ -36,3 +36,7 @@ jobs:
       - run:
           name: test
           command: npm test
+      - store_test_results:
+          path: reports/tests/
+      - store_artifacts:
+          path: ./reports/coverage/lcov.info

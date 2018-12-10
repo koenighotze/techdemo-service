@@ -16,4 +16,11 @@ module.exports = {
   ],
   testEnvironment: 'node',
   preset: 'ts-jest',
+  reporters: [
+    "default",
+    [ "jest-junit", { 'outputDirectory': 'reports/tests' } ]
+  ],
+  resetModules: true,
+  resetMocks: true,
+  coverageDirectory: "reports/coverage",
 }
