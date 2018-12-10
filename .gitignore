@@ -78,3 +78,4 @@ config/local.json
 *.log
 *.tmp
 dist/
+notes.md
