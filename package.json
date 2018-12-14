@@ -1,5 +1,7 @@
 {
-  "name": "techdemo",
+  "name": "techdemo-service",
+  "description": "blah blahs",
+  "displayName": "Techdemo Service",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,9 +21,7 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\"",
     "prettify": "./scripts/prettify.sh",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "lint.dockerfile": "docker run --rm -i hadolint/hadolint < Dockerfile",
-    "build-docker": "docker build -t koenighotze/techdemo:`node -p \"require('./package.json').version\"` .",
-    "run-docker": "docker run --rm=true -ti --init -p 3000:3000 koenighotze/techdemo:`node -p \"require('./package.json').version\"` ."
+    "lint.dockerfile": "docker run --rm -i hadolint/hadolint < Dockerfile"
   },
   "dependencies": {
     "amqplib": "^0.5.3",
@@ -29,6 +29,7 @@
     "clarify": "^2.1.0",
     "config": "^1.31.0",
     "errorhandler": "^1.5.0",
+    "express-healthcheck": "^0.1.0",
     "express": "^4.16.4",
     "joi": "^14.3.0",
     "pg": "^7.7.1",
@@ -48,7 +49,6 @@
     "concurrently": "^4.1.0",
     "dts-gen": "^0.5.7",
     "eslint": "^5.10.0",
-    "express-healthcheck": "^0.1.0",
     "jest": "^23.6.0",
     "jest-junit": "^5.2.0",
     "nodemon": "^1.18.7",
