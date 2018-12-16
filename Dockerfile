@@ -19,17 +19,16 @@ ARG COMMIT_SHA
 ARG BUILD_TIMESTAMP
 ARG VCS_URL
 
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.build-date="$BUILD_TIMESTAMP"
-LABEL org.label-schema.name="$NAME"
-LABEL org.label-schema.description="$DESCRIPTION"
-LABEL org.label-schema.vcs-url="$VCS_URL"
-LABEL org.label-schema.vcs-ref="$COMMIT_SHA"
-LABEL org.label-schema.vendor="Koenighotze"
-LABEL org.label-schema.docker.cmd="docker run --rm=true -ti --init -p 3000:3000 koenighotze/techdemo-service"
+LABEL org.opencontainers.image.created="$BUILD_TIMESTAMP"
+LABEL org.opencontainers.image.title="$NAME"
+LABEL org.opencontainers.image.description="$DESCRIPTION"
+LABEL org.opencontainers.image.source="$VCS_URL"
+LABEL org.opencontainers.image.revision="$COMMIT_SHA"
+LABEL org.opencontainers.image.author="Koenighotze"
+LABEL org.opencontainers.image.version=$VERSION
 
-LABEL org.koenighotze.version=$VERSION
-LABEL maintainer=koenighotze@gmail.com
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.docker.cmd="docker run --rm=true -ti --init -p 3000:3000 koenighotze/techdemo-service"
 
 WORKDIR /app
 COPY --from=build-env /build/dist ./
