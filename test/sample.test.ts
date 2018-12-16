@@ -1,5 +1,6 @@
+import app from '../src/app'
 describe('a test', () => {
   it('should run', () => {
-    expect(1).toEqual(1)
+    expect(app).not.toBeNull()
   })
 })
