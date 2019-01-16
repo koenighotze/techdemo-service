@@ -5,7 +5,6 @@ COPY package.json package-lock.json ./
 RUN npm i
 
 COPY src/ src/
-COPY test/ test/
 COPY tsconfig* jest.config.js tslint.json ./
 RUN npm run build && \
     npm prune --production

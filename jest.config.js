@@ -12,8 +12,9 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testMatch: [
-    '**/test/**/*.test.(ts|js)',
+    '**/src/**/*.test.(ts|js)',
   ],
+  roots: [ 'src' ],
   testEnvironment: 'node',
   preset: 'ts-jest',
   reporters: [
