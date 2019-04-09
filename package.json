@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "clean": "/bin/rm -fr dist/* reports/*",
-    "start": "ntl",
+    "start": "node server.js",
     "build": "npm run build-ts && npm run tslint",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",

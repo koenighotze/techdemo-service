@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techdemo-service
+  namespace: techdemo
+  labels:
+    app: techdemo-service
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: techdemo-service
+  template:
+    metadata:
+      labels:
+        app: techdemo-service
+    spec:
+      containers:
+      - name: techdemo-service
+        image: koenighotze/techdemo-service:0.0.1
+        resources:
+          limits:
+            cpu: 1
+            memory: 150Mi
+          requests:
+            cpu: 200m
+            memory: 100Mi
+        envFrom:
+        - configMapRef:
+            name: techdemo-service-config
+        env:
+          - name: NODE_ENV
+            value: "production"
+        ports:
+        - name: http
+          containerPort: 3000
+        securityContext:
+          runAsUser: 1000
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          privileged: false
+        livenessProbe:
+          httpGet:
+            path: "/healthz"
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        terminationMessagePath: /dev/stdout

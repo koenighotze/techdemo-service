@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationControler
+metadata:
+  name: techdemo
+  namespace: techdemo
+spec:
+  replicas: 3
+  selector:
+    app: techdemo-service
+template:
+  metadata:
+    labels:
+      app: techdemo-service
+  spec:
+    containers:
+      - name: techdemo
+        image: koenighotze/techdemo:0.0.1
+        resources:
+          limits:
+            cpu: 50m
+            memory: 50Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        # imagePullPolicy: Always
+        # Force reuse of local images
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
